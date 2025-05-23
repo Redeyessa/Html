@@ -1,73 +1,86 @@
 body {
-  margin: 10px;
-  font-family: Arial, sans-serif;
-}
-
-.navbar {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fafafa;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #2874f0;
-  color: white;
+  height: 100vh;
 }
 
-.logo img {
-  height: 40px;
+.login-container {
+  background-color: #fff;
+  padding: 40px;
+  border: 1px solid #dbdbdb;
+  width: 350px;
+  text-align: center;
 }
 
-.search-box {
-  flex: 1;
-  margin: 0 20px;
+.logo {
+  font-family: 'Grand Hotel', cursive;
+  font-size: 40px;
+  color: #262626;
+  margin-bottom: 30px;
 }
 
-.search-box input {
+.login-form input {
   width: 100%;
-  padding: 8px;
-  border-radius: 2px;
- border: none;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  background: #fafafa;
 }
 
-.login-button button {
-  background-color: white;
-  color: #2874f0;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #0095f6;
+  color: white;
   font-weight: bold;
-}
-.banner{
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin-top: 10px;
-    border-radius: 3px;
-    border: none;
-}
-.banner img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 3px;
-    border: none;
-    transform: opacity 0.5s ease-in-out;
-}
-.navbar1{
- display: flex;
-  align-items: center;
-  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
   margin-top: 10px;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
 }
-.logo1{
-    height: 20px;
+
+.divider {
+  margin: 20px 0;
+  font-size: 13px;
+  color: #8e8e8e;
+  position: relative;
 }
-.navbar2{
- display: flex;
-  align-items: center;
-  padding: 10px 20px;
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 1px;
+  background-color: #dbdbdb;
+  top: 50%;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.fb-login {
+  color: #385185;
+  font-weight: bold;
+  display: block;
   margin-top: 10px;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.forgot {
+  display: block;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #00376b;
+  text-decoration: none;
 }
