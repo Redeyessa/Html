@@ -1,0 +1,175 @@
+html{
+    background-color: hsl(35, 94%, 93%);
+    border-radius: 2%;
+    max-width: 95%;
+    padding: 2.5%;
+    margin-left: auto;
+}
+body{
+    margin: auto;
+    padding: 2.5%;
+    background-color: antiquewhite;
+    text-align: left;
+    text-justify: auto;
+    align-items: center;
+
+}
+*{
+    max-width: 1440px;
+    text-justify: auto;
+}
+.div{
+    background-color: white;
+    border-radius: 25px;
+    width: 900px;
+    height: 3000px;
+    padding-right: 15px;
+    
+}
+.image{
+    width: 850px;
+    height: 450px;
+    border-radius: 25px;
+    margin-top: 50px;
+    margin-left: 15px;
+
+}
+.ht1{
+    
+    font-family: YoungSerif;
+     font-size: 4.5rem;
+    font-weight:400;
+    text-align: left;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto
+}
+.pa{
+     font-size: 1rem;
+    font-weight: 400;
+    
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Outfit;
+    color: hsl(24, 5%, 18%);
+    font-size: 1.5rem;
+
+}
+.Preparation{
+    background-color: antiquewhite;
+    border-radius: 5px;
+    line-height: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 25px;
+
+}
+.Preparation li{
+    line-height: 50px;
+    margin-left: 10px;
+    margin-right: auto;
+    list-style: square;
+    list-style-position: inherit;
+}
+li{
+    line-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ht21{
+    color: hsl(332, 51%, 32%);
+    margin-right: auto;
+    margin-left: 20px;
+    font-size: 1.5rem;
+}
+.ht2{
+    margin-left: 20px;
+    font-size: 2rem;
+    color: #794737;
+    font-family: 'Times New Roman', Times, serif; 
+}
+
+.Ingredients, .Instructions{
+    line-height: 50px;
+    border-bottom: 0.2px solid rgb(136, 135, 135);
+    padding: 50px;
+    
+    
+}
+li::marker{
+    color: hsl(331, 32%, 49%);
+}
+
+p, li, table {
+    font-family: Outfit;
+    color: hsl(24, 5%, 18%);
+    font-size: 1.5rem;
+}
+.nutrition-item {
+    display: inline;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.5rem;
+  }
+  .item {
+    padding-left: 35px;
+    color: gray;
+    width: 50%;
+  }
+ .value {
+    font-weight: bold;
+    color: #794737;
+    width: 50%;
+    padding-left: 250px;
+    
+    }
+.item1 {
+    padding-left: 35px;
+    color: gray;
+    width: 50%;
+  }
+ .value1 {
+    font-weight: bold;
+    color: #794737;
+    width: 50%;
+    padding-left: 305px;
+    
+    }
+      .item2 {
+    padding-left: 35px;
+    color: gray;
+    width: 50%;
+  }
+ .value2 {
+    font-weight: bold;
+    color: #794737;
+    width: 50%;
+    padding-left: 295px;
+    
+    }
+      .item3 {
+    padding-left: 35px;
+    color: gray;
+    width: 50%;
+  }
+ .value3 {
+    font-weight: bold;
+    color: #794737;
+    width: 50%;
+    padding-left: 295px;
+    
+    }
+.Nutrition{
+    line-height: 50px;
+    padding: 5.5%;
+    margin-left: 30px;
+}
+.tab{
+    border-bottom: 2px solid gray;
+}
+.p8{
+    margin-left: 30px;
+}
+
+
+
