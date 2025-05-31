@@ -42,7 +42,7 @@ submit.addEventListener("click", function (event) {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert("Error"+errorMessage);
+    alert("Error: "+errorMessage);
   });
 
 
@@ -55,7 +55,7 @@ document.getElementById('forgot').addEventListener("click", () => {
   }
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      alert("Password reset email sent!");
+      alert("If this email is registered, you will receive a password reset email");
     })
     .catch((error) => {
       alert("Error: " + error.message);
