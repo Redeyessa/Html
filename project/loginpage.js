@@ -35,12 +35,14 @@ submit.addEventListener("click", function (event) {
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
+    alert("Login Account.....");
     window.location.href="main.html";
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    alert("Error"+errorMessage);
   });
 
 
