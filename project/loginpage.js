@@ -23,7 +23,7 @@
 
   const email = document.getElementById('Email').value;
   const password = document.getElementById('password').value;
-  const submit = document.getElementById('submit').value;
+  const submit = document.getElementById('submit');
 
   submit.addEventListener("click",function(event){
     event.preventDefault()
