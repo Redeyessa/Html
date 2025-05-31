@@ -31,7 +31,9 @@ submit.addEventListener("click", function (event) {
   event.preventDefault()
   const email = document.getElementById('Email').value;
   const password = document.getElementById('password').value;
-  createUserWithEmailAndPassword(auth, email, password)
+  const copassword = document.getElementById('compassword').value;
+  if (password==copassword) {
+    createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed up 
       const user = userCredential.user;
@@ -45,6 +47,11 @@ submit.addEventListener("click", function (event) {
       alert(errorMessage)
       // ..
     });
+  } else {
+    alert("Password Missmatch or Email id not Enter");
+    return;
+  }
+  
 
 })
 document.getElementById('forgot').addEventListener("click", () => {
