@@ -1,1 +1,21 @@
-<h1>Login Successfully!!!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main Page</title>
+  <script type="module" src="main.js" defer></script>
+</head>
+<body>
+  <h1>Login Successfully!!!</h1>
+  <button id="logout">Logout</button>
+
+  <script type="module">
+    import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+    const auth = getAuth();
+    document.getElementById("logout").addEventListener("click", () => {
+      signOut(auth).then(() => {
+        window.location.href = "loginpage.html";
+      });
+    });
+  </script>
+</body>
+</html>
