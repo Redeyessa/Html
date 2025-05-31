@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="loginpage.js"></script>
+
     <style>
         body{
             margin: 0; 
@@ -28,9 +30,15 @@
         .ema{
             background-color: rgba(202, 228, 228, 0);
             width: 300px;
-            height: 20px;
-            border: none;
-           
+            height: 40px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            outline: none;
+            border-bottom: 3px white solid ;
+            color: #ffffff;
+            font-size: 15px;
+        
         }
         .ema::placeholder{
             color: white;
@@ -45,15 +53,16 @@
     <center>
     <div class="divi">
         <h1 class="he1">Login Form</h1>
-        <input class="ema" type="email" placeholder="Enter Your Email">
-        <hr style="border: 2px solid white; border-radius: 2px; width: 300px;">
-        <input class="ema , pa" type="password" placeholder="Enter Your password">
-        <hr style="border: 2px solid white; border-radius: 2px; width: 300px;">
+        <label for="Email"><input class="ema" type="email" placeholder="Enter Your Email"></label>
+        
+        <label for="password"> <input class="ema , pa" type="password" placeholder="Enter Your password"></label>
+       
+        
         <div style=" margin-top: 30px;"><input type="checkbox"><label style="color: white;">Remember Me</label> <a style="padding-left: 100px; color: #ffffff;">Forget Password?</a></div>
         <button style="margin-top: 30px; width: 300px; height: 50px; border-radius: 10px; background-color: white; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Log in</button>
         <br>
         <br>
-        <a style="color: white;"> Don't have an account?Register</a>
+        <a style="color: white;" href="#"> Don't have an account? Register</a>
         
     </div>
     </center>
