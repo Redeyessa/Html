@@ -3,6 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+import { browserLocalPersistence, browserSessionPersistence, setPersistence } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -43,4 +44,10 @@ submit.addEventListener("click", function (event) {
       alert(errorMessage)
       // ..
     });
+
 })
+const rememberCheckbox = document.getElementById('Remember');
+setPersistence(auth, rememberCheckbox.checked ? browserLocalPersistence : browserSessionPersistence)
+  .then(() => {
+    // Ready to sign in or register
+  });
