@@ -42,7 +42,7 @@ submit.addEventListener("click", function (event) {
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert("Error: "+errorMessage);
+    alert("password is incorrect or Email is not Register :"+errorMessage);
   });
 
 
