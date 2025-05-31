@@ -2,7 +2,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 import { browserLocalPersistence, browserSessionPersistence, setPersistence } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -31,28 +31,32 @@ submit.addEventListener("click", function (event) {
   event.preventDefault()
   const email = document.getElementById('Email').value;
   const password = document.getElementById('password').value;
-  const copassword = document.getElementById('compassword').value;
-  if (password==copassword) {
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed up 
-      const user = userCredential.user;
-      alert("Creating Account...")
-      window.location.href="loginpage.html";
-      // ...
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage)
-      // ..
-    });
-  } else {
-    alert("Password Missmatch or Email id not Enter");
-    return;
-  }
-  
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    window.location.href="main.html";
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+
 
 })
-
+document.getElementById('forgot').addEventListener("click", () => {
+  const email = document.getElementById('Email').value;
+  if (!email) {
+    alert("Please enter your email address first.");
+    return;
+  }
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert("Password reset email sent!");
+    })
+    .catch((error) => {
+      alert("Error: " + error.message);
+    });
+});
 
