@@ -1,7 +1,7 @@
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
     import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
-     import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+   
 
     const firebaseConfig = {
       apiKey: "AIzaSyA9m77QBvEVC_NWYHTn0G1q7dLdql82WTs",
@@ -16,14 +16,13 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
+    
     onAuthStateChanged(auth, (user) => {
       if (!user) {
-        window.location.href = "loginpage.html";
+        window.location.href = "loginpage.html"; 
       }
     });
 
-    document.getElementById("logout").addEventListener("click", () => {
-      signOut(auth).then(() => {
-        window.location.href = "loginpage.html";
-      });
-    });
+  
+
+    
