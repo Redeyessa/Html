@@ -1,5 +1,4 @@
-<h1 id="series-title"></h1>
-<div id="seasons-container"></div>
+
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
@@ -34,11 +33,11 @@ async function loadSeries() {
 
     for (let season in data.seasons) {
       const seasonDiv = document.createElement("div");
-      seasonDiv.innerHTML = <h2>${season}</h2>;
+      seasonDiv.innerHTML = `<h2>${season}</h2>`;
 
       data.seasons[season].forEach(ep => {
         const epDiv = document.createElement("div");
-        epDiv.innerHTML = <p>${ep.episode}</p>;
+        epDiv.innerHTML = `<p>${ep.episode}</p>`;
         seasonDiv.appendChild(epDiv);
       });
 
@@ -51,3 +50,5 @@ async function loadSeries() {
 
 loadSeries();
 </script>
+<h1 id="series-title">load..</h1>
+<div id="seasons-container"></div>
