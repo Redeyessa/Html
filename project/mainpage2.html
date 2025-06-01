@@ -1,0 +1,53 @@
+<h1 id="series-title"></h1>
+<div id="seasons-container"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyA9m77QBvEVC_NWYHTn0G1q7dLdql82WTs",
+    authDomain: "freeott-780a3.firebaseapp.com",
+    projectId: "freeott-780a3",
+    storageBucket: "freeott-780a3.appspot.com",
+    messagingSenderId: "73605407408",
+    appId: "1:73605407408:web:5dd1cf0ba336cd7f519175",
+    measurementId: "G-RQ15FHRTFG"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Get seriesId from URL
+const params = new URLSearchParams(window.location.search);
+const seriesId = params.get("series");
+
+async function loadSeries() {
+  const docRef = doc(db, "series", seriesId);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    const data = docSnap.data();
+    document.getElementById("series-title").textContent = data.title;
+
+    const container = document.getElementById("seasons-container");
+
+    for (let season in data.seasons) {
+      const seasonDiv = document.createElement("div");
+      seasonDiv.innerHTML = <h2>${season}</h2>;
+
+      data.seasons[season].forEach(ep => {
+        const epDiv = document.createElement("div");
+        epDiv.innerHTML = <p>${ep.episode}</p>;
+        seasonDiv.appendChild(epDiv);
+      });
+
+      container.appendChild(seasonDiv);
+    }
+  } else {
+    document.getElementById("series-title").textContent = "Series not found";
+  }
+}
+
+loadSeries();
+</script>

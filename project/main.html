@@ -112,7 +112,7 @@
   </header>
   <div class="Animebar">
     <img src="https://imgeng.jagran.com/images/2025/02/24/article/image/Pradeep-Ranganathan-1740365523315.webp" class="Anime item1"></img>
-    <a href="#"><img src="https://th.bing.com/th/id/OIP.M3QoJC2lpeqt1_sGfe_VaQHaEK?rs=1&pid=ImgDetMain"
+    <a onclick="openSeries('got')"><img id ="img1" src=""
       class="Anime item2"></img></a>
     <img src="https://wallpapercave.com/wp/wp6374954.jpg" class="Anime item3"></img>
     <img src="https://th.bing.com/th/id/OIP.pUh6IS8kiomgscBqGhmjTQHaEK?rs=1&pid=ImgDetMain" class="Anime item4"></img>
@@ -121,8 +121,14 @@
     <img src="https://wallpapers.com/images/featured/avengers-assemble-bci4k731q4fiilqe.jpg" class="Anime item7"></img>
     <img src="https://th.bing.com/th/id/OIP.cJ6rE3DVWHhQj9GGdqE4xgHaEK?rs=1&pid=ImgDetMain" class="Anime item8"></img>
   </div>
+  <script>
+  function openSeries(seriesId) {
+    window.location.href = 'mainpage2.html?series=${seriesId}';
+  }
+</script>
 
   <h2 id="displayText">Load...</h2>
+
 
 
 
