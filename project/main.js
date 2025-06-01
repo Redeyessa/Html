@@ -45,6 +45,8 @@ async function loadWelcomeText() {
 }
 
 
+
+
 window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("logout").addEventListener("click", () => {
         signOut(auth).then(() => {
