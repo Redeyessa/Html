@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Main Page</title>
   <script type="module" src="main.js" defer></script>
   <style>
-    #logout{
+    #logout {
       align-items: center;
       display: flex;
       right: 10px;
@@ -16,14 +17,116 @@
       padding: 10px;
       border-radius: 5px;
     }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+    }
+
+    .Animebar {
+      width: 90%;
+      max-width: 1536px;
+      margin-inline: auto;
+      position: relative;
+      height: 100px;
+      margin-top: 5rem;
+      overflow: hidden;
+      mask-image: linear-gradient(to right,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 1) 20%,
+          rgba(0, 0, 0, 1) 80%,
+          rgba(0, 0, 0, 0));
+    }
+
+
+    @keyframes scorllLeft {
+      to {
+        left: -200px;
+      }
+    }
+
+    @keyframes scorllRight {
+      to {
+        right: -200px;
+      }
+    }
+
+    .Anime {
+      width: 200px;
+      height: 100px;
+      background-color: red;
+      border-radius: 6px;
+      position: absolute;
+      left: max(calc(200px * 8), 100%);
+      animation-name: scorllLeft;
+      animation-duration: 30s;
+      animation-timing-function: linear;
+      text-align: center;
+      animation-iteration-count: infinite;
+      align-items: center;
+    }
+
+
+    .item1 {
+      animation-delay: calc(30s / 8 * (8 - 1) * -1);
+    }
+
+    .item2 {
+      animation-delay: calc(30s / 8 * (8 - 2) * -1);
+    }
+
+    .item3 {
+      animation-delay: calc(30s / 8 * (8 - 3) * -1);
+    }
+
+    .item4 {
+      animation-delay: calc(30s / 8 * (8 - 4) * -1);
+    }
+
+    .item5 {
+      animation-delay: calc(30s / 8 * (8 - 5) * -1);
+    }
+
+    .item6 {
+      animation-delay: calc(30s / 8 * (8 - 6) * -1);
+    }
+
+    .item7 {
+      animation-delay: calc(30s / 8 * (8 - 7) * -1);
+    }
+
+    .item8 {
+      animation-delay: calc(30s / 8 * (8 - 8) * -1);
+    }
   </style>
 </head>
+
 <body style="background-color: rgb(50, 50, 50);">
   <header>
     <button id="logout">Logout</button>
   </header>
-  
+  <div class="Animebar">
+    <img src="https://imgeng.jagran.com/images/2025/02/24/article/image/Pradeep-Ranganathan-1740365523315.webp" class="Anime item1"></img>
+    <img src="https://th.bing.com/th/id/OIP.M3QoJC2lpeqt1_sGfe_VaQHaEK?rs=1&pid=ImgDetMain"
+      class="Anime item2"></img>
+    <img src="https://wallpapercave.com/wp/wp6374954.jpg" class="Anime item3"></img>
+    <img src="https://th.bing.com/th/id/OIP.pUh6IS8kiomgscBqGhmjTQHaEK?rs=1&pid=ImgDetMain" class="Anime item4"></img>
+    <img src="https://th.bing.com/th/id/OIP.ocqPuimjfU4733a7PeTBpQHaHa?rs=1&pid=ImgDetMain" class="Anime item5"></img>
+    <img src="https://th.bing.com/th/id/OIP.ZwcJc1JA2zBjq8_eoNkcagAAAA?rs=1&pid=ImgDetMain" class="Anime item6"></img>
+    <img src="https://wallpapers.com/images/featured/avengers-assemble-bci4k731q4fiilqe.jpg" class="Anime item7"></img>
+    <img src="https://th.bing.com/th/id/OIP.cJ6rE3DVWHhQj9GGdqE4xgHaEK?rs=1&pid=ImgDetMain" class="Anime item8"></img>
+  </div>
+
+  <h2 id="displayText">Load...</h2>
+
+
 
 
 </body>
+
 </html>

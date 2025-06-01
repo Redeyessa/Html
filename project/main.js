@@ -1,7 +1,8 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
 
+// Firebase config
 const firebaseConfig = {
     apiKey: "AIzaSyA9m77QBvEVC_NWYHTn0G1q7dLdql82WTs",
     authDomain: "freeott-780a3.firebaseapp.com",
@@ -14,15 +15,29 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 
 onAuthStateChanged(auth, (user) => {
     const Signin = document.getElementById("logout");
     if (!user) {
         Signin.innerHTML = "Sign in";
-        //window.location.href = "loginpage.html";
+        // window.location.href = "loginpage.html";
     }
 });
+
+
+async function loadWelcomeText() {
+    const docRef = doc(db, "massages", "welcomeText"); 
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        const message = docSnap.data().message;
+        document.getElementById("displayText").textContent = message;
+    } else {
+        document.getElementById("displayText").textContent = "No message found";
+    }
+}
 
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -31,6 +46,6 @@ window.addEventListener("DOMContentLoaded", () => {
             window.location.href = "loginpage.html";
         });
     });
+
+    loadWelcomeText(); 
 });
-
-
