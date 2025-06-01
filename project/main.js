@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebas
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
 
-// Firebase config
+
 const firebaseConfig = {
     apiKey: "AIzaSyA9m77QBvEVC_NWYHTn0G1q7dLdql82WTs",
     authDomain: "freeott-780a3.firebaseapp.com",
