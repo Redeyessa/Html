@@ -15,14 +15,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// 🔒 Redirect if not logged in, otherwise display email
+
 onAuthStateChanged(auth, (user) => {
+    const Signin = document.getElementById("logout");
     if (!user) {
-        window.location.href = "loginpage.html";
+        Signin.innerHTML = "Sign in";
+        //window.location.href = "loginpage.html";
     }
 });
 
-// Logout handler
+
 window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("logout").addEventListener("click", () => {
         signOut(auth).then(() => {
