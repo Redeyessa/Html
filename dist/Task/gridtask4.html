@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        img{
+            height: 100%;
+            width: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            
+        }
+        .din{
+            width: 1000px;
+            height: 600px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(5,minmax(100px,1fr));
+            grid-template-rows: repeat(4,minmax(100px,1fr));
+            gap: 10px;
+            
+
+        }
+        .din > img:nth-child(2){
+            grid-column: span 3;
+            grid-row: span 3;
+        }
+        .din > img:nth-child(4) ,img:nth-child(5){
+            grid-row: span 2;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="din">
+    <img src="./img/1.png">
+    <img src="./img/2.png">
+    <img src="./img/3.png">
+    <img src="./img/1.png">
+    <img src="./img/2.png">
+    <img src="./img/3.png">
+    <img src="./img/1.png">
+    <img src="./img/1.png">
+    <img src="./img/2.png">
+    <img src="./img/3.png">
+    </div>
+</body>
+</html>
