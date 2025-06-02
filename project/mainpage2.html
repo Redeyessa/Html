@@ -1,54 +1,154 @@
-
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyA9m77QBvEVC_NWYHTn0G1q7dLdql82WTs",
-    authDomain: "freeott-780a3.firebaseapp.com",
-    projectId: "freeott-780a3",
-    storageBucket: "freeott-780a3.appspot.com",
-    messagingSenderId: "73605407408",
-    appId: "1:73605407408:web:5dd1cf0ba336cd7f519175",
-    measurementId: "G-RQ15FHRTFG"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Get seriesId from URL
-const params = new URLSearchParams(window.location.search);
-const seriesId = params.get("series");
-
-async function loadSeries() {
-  const docRef = doc(db, "series", seriesId);
-  const docSnap = await getDoc(docRef);
-
-  if (docSnap.exists()) {
-    const data = docSnap.data();
-    document.getElementById("series-title").textContent = data.title;
-
-    const container = document.getElementById("seasons-container");
-
-    for (let season in data.seasons) {
-      const seasonDiv = document.createElement("div");
-      seasonDiv.innerHTML = `<h2>${season}</h2>`;
-
-      data.seasons[season].forEach(ep => {
-        const epDiv = document.createElement("div");
-        epDiv.innerHTML = `<p>${ep.episode}</p>`;
-        seasonDiv.appendChild(epDiv);
-      });
-
-      container.appendChild(seasonDiv);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Series Player</title>
+  <style>
+    body {
+      background-color: rgba(0, 0, 0, 0.911);
+      color: white;
+      margin: 0;
+      font-family: Arial, sans-serif;
     }
-  } else {
-    document.getElementById("series-title").textContent = "Series not found";
-  }
-}
 
-loadSeries();
-</script>
-<h1 id="series-title">load..</h1>
-<div id="seasons-container"></div>
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px;
+    }
+
+    .video-box {
+      flex: 1 1 350px;
+      max-width: 100%;
+    }
+
+    .v {
+      width: 100%;
+      height: auto;
+      border: white 5px solid;
+      border-radius: 10px;
+    }
+
+    .deta {
+      flex: 1 1 300px;
+      font-size: 18px;
+      text-align: justify;
+      color: white;
+      max-width: 800px;
+    }
+
+    .epibtn {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #1e88e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .epibtn:hover {
+      background-color: #1565c0;
+      transform: scale(1.05);
+    }
+
+    .epibtn:active {
+      transform: scale(0.95);
+    }
+
+    .d1 {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 30px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="series-title">Loading...</h1>
+
+  <div class="flex-container">
+    <div class="video-box">
+      <video id="videoPlayer" class="v" controls>
+        <source id="videoSource" type="video/mp4">
+      </video>
+    </div>
+    <p id="detail" class="deta"></p>
+  </div>
+
+  <h1 id="series-title1">Loading...</h1>
+  <div class="d1" id="seasons-container"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9m77QBvEVC_NWYHTn0G1q7dLdql82WTs",
+      authDomain: "freeott-780a3.firebaseapp.com",
+      projectId: "freeott-780a3",
+      storageBucket: "freeott-780a3.appspot.com",
+      messagingSenderId: "73605407408",
+      appId: "1:73605407408:web:5dd1cf0ba336cd7f519175",
+      measurementId: "G-RQ15FHRTFG"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const params = new URLSearchParams(window.location.search);
+    const seriesId = params.get("series");
+
+    async function loadSeries() {
+      const docRef = doc(db, "series", seriesId);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        document.getElementById("series-title").textContent = data.title || seriesId.toUpperCase();
+        document.getElementById("series-title1").textContent = data.title || seriesId.toUpperCase();
+        document.getElementById("detail").textContent = data.details || "";
+
+        const container = document.getElementById("seasons-container");
+
+        for (let season in data.seasons) {
+          const seasonDiv = document.createElement("div");
+          seasonDiv.innerHTML = `<h2>${season}</h2>`;
+
+          const episodes = data.seasons[season];
+          Object.entries(episodes).forEach(([epNum, url]) => {
+            const epBtn = document.createElement("button");
+            epBtn.textContent = `Episode ${epNum}`;
+            epBtn.className = "epibtn";
+            epBtn.onclick = () => {
+              const video = document.getElementById("videoPlayer");
+              const source = document.getElementById("videoSource");
+              source.src = url;
+              video.load();
+              video.scrollIntoView({ behavior: "smooth" });
+            };
+            seasonDiv.appendChild(epBtn);
+          });
+
+          container.appendChild(seasonDiv);
+        }
+      } else {
+        document.getElementById("series-title").textContent = "Series not found";
+      }
+    }
+
+    loadSeries();
+  </script>
+
+</body>
+</html>
