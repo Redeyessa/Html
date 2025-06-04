@@ -138,6 +138,30 @@
         font-size: 14px;
       }
     }
+    .main{
+      height: auto;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 5px;
+      white-space: nowrap;
+      padding: 10px;
+    }
+    .main::-webkit-scrollbar{
+      display: none;
+    }
+    
+    .mainimg{
+      width: 250px;
+      height: 180px;
+      background-color: red;
+      position: static;
+      flex: 0 0 auto;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-radius: 6px;
+     
+    }
   </style>
 </head>
 
@@ -158,6 +182,18 @@
     <img src="https://th.bing.com/th/id/OIP.ZwcJc1JA2zBjq8_eoNkcagAAAA?rs=1&pid=ImgDetMain" class="Anime item6" />
     <img src="https://wallpapers.com/images/featured/avengers-assemble-bci4k731q4fiilqe.jpg" class="Anime item7" />
     <img src="https://th.bing.com/th/id/OIP.cJ6rE3DVWHhQj9GGdqE4xgHaEK?rs=1&pid=ImgDetMain" class="Anime item8" />
+  </div>
+    <h1 style="margin-left: 15px;">Tamil series</h1>
+  <div class="main">
+    
+    <a onclick="openSeries('jjk')"><img src="https://timelinecovers.pro/facebook-cover/download/game-of-thrones6125-facebook-cover.jpg" class="mainimg" width="200px" height="150px"></a>
+    <a onclick="openSeries()"><img src="" class="mainimg"></a>
+    <a onclick="openSeries()"><img src="" class="mainimg"></a>
+    <a onclick="openSeries()"><img src="" class="mainimg"></a>
+    <a onclick="openSeries()"><img src="" class="mainimg"></a>
+    <a onclick="openSeries()"><img src="" class="mainimg"></a>
+    <a onclick="openSeries()"><img src="" class="mainimg"></a>
+    <a onclick="openSeries()"><img src="" class="mainimg"></a>
   </div>
 </body>
 
