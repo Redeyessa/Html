@@ -3,99 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signup Page</title>
     <script type="module" src="signup.js" defer></script>
 
-
     <style>
-        body{
-            margin: 0; 
-            padding: 0; 
-            height: 100vh; 
-            width: 100vw; 
-            background-image: url("https://th.bing.com/th/id/R.3dbf4967a1fd72a9913663d17f92f320?rik=bTMwKiXfvQv%2f5A&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2014%2f05%2flaptop-wallpaper-25.jpg&ehk=5xoLIrdkgv%2fkfRA7UD9B1IUR2tLyRHYoL4qgWx4ZNQw%3d&risl=&pid=ImgRaw&r=0");
-            background-size: cover;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .divi{
-            width: 30%;
-            height: 430px;
+        body {
+            background-color: rgb(50, 50, 50);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 20px;
             border: 1px solid white;
             backdrop-filter: blur(5px);
-            margin-top: 250px;
-            border-radius: 30px;
+            text-align: center;
         }
-        .he1{
-            color: white;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-        .ema{
-            background-color: rgba(202, 228, 228, 0);
-            width: 300px;
+        input {
+            width: 100%;
             height: 40px;
-            border-top: none;
-            border-left: none;
-            border-right: none;
+            background-color: rgba(255, 255, 255, 0);
+            border: none;
+            border-bottom: 2px solid white;
             outline: none;
-            border-bottom: 3px white solid ;
-            color: #ffffff;
-            font-size: 15px;
-        
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
-        .ema::placeholder{
+        input::placeholder {
             color: white;
             opacity: 1;
         }
-        .pa{
-            margin-top: 20px;
+        button {
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
         }
-         .ema1{
-            background-color: rgba(202, 228, 228, 0);
-            width: 300px;
-            height: 40px;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            outline: none;
-            border-bottom: 3px white solid ;
-            color: #ffffff;
-            font-size: 15px;
-        
+        button:hover {
+            background-color: rgb(200, 200, 200);
         }
-        .ema1::placeholder{
+        a {
             color: white;
-            opacity: 1;
-        }
-        .pa1{
+            display: block;
             margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 20px;
+            }
         }
     </style>
-    
 </head>
 <body>
-    <center>
-    <div class="divi">
-        <h1 class="he1">Signup Page</h1>
-        <label for="Email">
-            <input class="ema" type="email" placeholder="Enter Your Email" id="Email">
-        </label>
-        
-        <label for="password"> 
-            <input class="ema , pa" type="password" placeholder="Enter Your password" id="password">
-        </label>
-
-          <label for="compassword"> 
-            <input class="ema1 , pa1" type="password" placeholder="comform password" id="compassword">
-        </label>
-       
-        
-        <button id="submit" style=" width: 300px; height: 50px; border-radius: 10px; background-color: white; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; margin-top: 30px;">Sign up</button>
-        <div style="margin-top: 30px;">
-             <a style="color: white;" href="loginpage.html"> I have an account? Register</a> 
-        </div>
-        
-        
-        
+    <div class="container">
+        <h1>Signup Page</h1>
+        <input type="email" placeholder="Enter Your Email" id="Email">
+        <input type="password" placeholder="Enter Your Password" id="password">
+        <input type="password" placeholder="Confirm Password" id="compassword">
+        <button id="submit">Sign up</button>
+        <a href="loginpage.html">I have an account? Login</a>
     </div>
-    </center>
 </body>
 </html>

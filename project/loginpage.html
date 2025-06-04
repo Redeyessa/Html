@@ -1,101 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Page</title>
     <script type="module" src="loginpage.js" defer></script>
     <script>
         function showpass() {
             var x = document.getElementById('password');
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+            x.type = x.type === "password" ? "text" : "password";
         }
     </script>
 
-
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background-color: rgb(50, 50, 50);
+            box-sizing: border-box;
         }
-
-        .divi {
-            width: 30%;
-            height: 410px;
+        body {
+            background-color: rgb(50, 50, 50);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 20px;
             border: 1px solid white;
             backdrop-filter: blur(5px);
-            margin-top: 50px;
-            border-radius: 30px;
-            color: white;
-
+            text-align: center;
         }
-
-        .he1 {
-            color: white;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-
-        .ema {
-            background-color: rgba(202, 228, 228, 0);
-            width: 300px;
+        .input {
+            width: 100%;
             height: 40px;
-            border-top: none;
-            border-left: none;
-            border-right: none;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid white;
             outline: none;
-            border-bottom: 3px white solid;
-            color: #ffffff;
-            font-size: 15px;
-
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
-
-        .ema::placeholder {
+        .input::placeholder {
             color: white;
             opacity: 1;
         }
-
-        .pa {
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        button {
+            width: 100%;
+            height: 50px;
+            border-radius: 10px;
+            background-color: white;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(200, 200, 200);
+        }
+        a {
+            color: white;
+            display: block;
             margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 20px;
+            }
         }
     </style>
-
 </head>
-
 <body>
-    <center>
-        <h1 style="color: white;">Free OTT</h1>
-        <div class="divi">
-            <h1 class="he1">Sign Form</h1>
-            <label for="Email">
-                <input class="ema" type="email" placeholder="Enter Your Email" id="Email">
-            </label>
-
-            <label for="password">
-                <input class="ema , pa" type="password" placeholder="Enter Your password" id="password">
-            </label>
-            <br>
-            <input type="checkbox" onclick="showpass()" style="margin-top: 30px;">Show password
-
-            <div style="margin-top: 30px;">
-
-                <a id="forgot" style="color: #ffffff;">Forget Password?</a><br>
-                <button id="submit"
-                    style="margin-top: 30px; width: 300px; height: 50px; border-radius: 10px; background-color: white; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Sign
-                    in</button>
-                <br>
-                <br>
-                <a style="color: white;" href="signup.html"> Don't have an account? Register</a>
-            </div>
-
-
+    <div class="container">
+        <h1>Login Page</h1>
+        <input class="input" type="email" placeholder="Enter Your Email" id="Email">
+        <input class="input" type="password" placeholder="Enter Your Password" id="password">
+        <div class="checkbox-container">
+            <input type="checkbox" onclick="showpass()"> Show password
         </div>
-    </center>
+        <a id="forgot" >Forget Password?</a>
+        <button id="submit">Sign in</button>
+        <a href="signup.html">Don't have an account? Register</a>
+    </div>
 </body>
-
 </html>
