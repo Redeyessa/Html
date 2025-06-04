@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -74,6 +75,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <h1 id="series-title">Loading...</h1>
@@ -93,6 +95,8 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
     import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+
 
     const firebaseConfig = {
       apiKey: "AIzaSyA9m77QBvEVC_NWYHTn0G1q7dLdql82WTs",
@@ -108,6 +112,8 @@
     const db = getFirestore(app);
     const params = new URLSearchParams(window.location.search);
     const seriesId = params.get("series");
+    const auth = getAuth(app);
+
 
     async function loadSeries() {
       const docRef = doc(db, "series", seriesId);
@@ -131,6 +137,15 @@
             epBtn.textContent = `Episode ${epNum}`;
             epBtn.className = "epibtn";
             epBtn.onclick = () => {
+              onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                  alert("Your are not Sign in. Sign in and enjoy Your Free Ott");
+                  window.location.href = "loginpage.html";
+                }else{
+                  
+                }
+              }
+            );
               const video = document.getElementById("videoPlayer");
               const source = document.getElementById("videoSource");
               source.src = url;
@@ -151,4 +166,5 @@
   </script>
 
 </body>
+
 </html>
