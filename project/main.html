@@ -1,64 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8" />
   <title>Main Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script type="module" src="main.js" defer></script>
   <script>
-  function openSeries(seriesId) {
-    window.location.href = `mainpage2.html?series=${seriesId}`;
-  }
-</script>
+    function openSeries(seriesId) {
+      window.location.href = `mainpage2.html?series=${seriesId}`;
+    }
+  </script>
+
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: rgb(50, 50, 50);
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
     #logout {
-      align-items: center;
-      display: flex;
+      position: fixed;
       right: 10px;
       top: 20px;
-      position: absolute;
       background-color: rgb(255, 57, 57);
-      color: rgb(255, 255, 255);
+      color: white;
       border: none;
-      padding: 10px;
+      padding: 10px 15px;
       border-radius: 5px;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    * {
-      margin: 0;
+      cursor: pointer;
+      z-index: 1000;
     }
 
     .Animebar {
       width: 90%;
       max-width: 1536px;
-      margin-inline: auto;
+      margin: 6rem auto 2rem;
       position: relative;
-      height: 100px;
-      margin-top: 5rem;
-      overflow: hidden;
+      height: 120px;
+      overflow-x: hidden;
       mask-image: linear-gradient(to right,
           rgba(0, 0, 0, 0),
           rgba(0, 0, 0, 1) 20%,
           rgba(0, 0, 0, 1) 80%,
           rgba(0, 0, 0, 0));
-    }
-
-
-    @keyframes scorllLeft {
-      to {
-        left: -200px;
-      }
-    }
-
-    @keyframes scorllRight {
-      to {
-        right: -200px;
-      }
     }
 
     .Anime {
@@ -68,14 +59,19 @@
       border-radius: 6px;
       position: absolute;
       left: max(calc(200px * 8), 100%);
-      animation-name: scorllLeft;
+      animation-name: scrollLeft;
       animation-duration: 30s;
       animation-timing-function: linear;
-      text-align: center;
       animation-iteration-count: infinite;
-      align-items: center;
+      object-fit: cover;
+      cursor: pointer;
     }
 
+    @keyframes scrollLeft {
+      to {
+        left: -200px;
+      }
+    }
 
     .item1 {
       animation-delay: calc(30s / 8 * (8 - 1) * -1);
@@ -108,35 +104,61 @@
     .item8 {
       animation-delay: calc(30s / 8 * (8 - 8) * -1);
     }
+
+    /* Responsive fallback for smaller screens */
+    @media (max-width: 768px) {
+      .Animebar {
+        height: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px;
+        animation: none;
+      }
+
+      .Anime {
+        position: static;
+        animation: none;
+        width: 140px;
+        height: 80px;
+        flex: 0 0 auto;
+      }
+    }
+
+    /* Extra small screens (phones) */
+    @media (max-width: 480px) {
+      .Anime {
+        width: 100px;
+        height: 60px;
+      }
+
+      #logout {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 
-<body style="background-color: rgb(50, 50, 50);">
+<body>
   <header>
     <button id="logout">Logout</button>
   </header>
+
   <div class="Animebar">
-    <img src="https://imgeng.jagran.com/images/2025/02/24/article/image/Pradeep-Ranganathan-1740365523315.webp" class="Anime item1"></img>
-    <a id="got-link" onclick="openSeries('jjk')"><img id="img1" src="" class="Anime item2" /></a>
-    <img src="https://wallpapercave.com/wp/wp6374954.jpg" class="Anime item3"></img>
-    <img src="https://th.bing.com/th/id/OIP.pUh6IS8kiomgscBqGhmjTQHaEK?rs=1&pid=ImgDetMain" class="Anime item4"></img>
-    <img src="https://th.bing.com/th/id/OIP.ocqPuimjfU4733a7PeTBpQHaHa?rs=1&pid=ImgDetMain" class="Anime item5"></img>
-    <img src="https://th.bing.com/th/id/OIP.ZwcJc1JA2zBjq8_eoNkcagAAAA?rs=1&pid=ImgDetMain" class="Anime item6"></img>
-    <img src="https://wallpapers.com/images/featured/avengers-assemble-bci4k731q4fiilqe.jpg" class="Anime item7"></img>
-    <img src="https://th.bing.com/th/id/OIP.cJ6rE3DVWHhQj9GGdqE4xgHaEK?rs=1&pid=ImgDetMain" class="Anime item8"></img>
+    <img src="https://imgeng.jagran.com/images/2025/02/24/article/image/Pradeep-Ranganathan-1740365523315.webp"
+      class="Anime item1" />
+    <a onclick="openSeries('jjk')">
+      <img id="img1" src="https://wallpapercave.com/wp/wp6374954.jpg" class="Anime item2" />
+    </a>
+    <img src="https://wallpapercave.com/wp/wp6374954.jpg" class="Anime item3" />
+    <img src="https://th.bing.com/th/id/OIP.pUh6IS8kiomgscBqGhmjTQHaEK?rs=1&pid=ImgDetMain" class="Anime item4" />
+    <img src="https://th.bing.com/th/id/OIP.ocqPuimjfU4733a7PeTBpQHaHa?rs=1&pid=ImgDetMain" class="Anime item5" />
+    <img src="https://th.bing.com/th/id/OIP.ZwcJc1JA2zBjq8_eoNkcagAAAA?rs=1&pid=ImgDetMain" class="Anime item6" />
+    <img src="https://wallpapers.com/images/featured/avengers-assemble-bci4k731q4fiilqe.jpg" class="Anime item7" />
+    <img src="https://th.bing.com/th/id/OIP.cJ6rE3DVWHhQj9GGdqE4xgHaEK?rs=1&pid=ImgDetMain" class="Anime item8" />
   </div>
-
-  <div>
-    
-  </div>
- 
-
-  <h2 id="displayText">Load...</h2>
-
-
-
-
-
 </body>
 
 </html>
