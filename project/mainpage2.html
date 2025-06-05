@@ -134,7 +134,11 @@
           const episodes = data.seasons[season];
           Object.entries(episodes).forEach(([epNum, url]) => {
             const epBtn = document.createElement("button");
-            epBtn.textContent = `Episode ${epNum}`;
+            if(seasonDiv.innerText=="Movie"){
+              epBtn.textContent = "Watch the Movie";
+            }else{
+               epBtn.textContent = `Episode ${epNum}`;
+            }
             epBtn.className = "epibtn";
             epBtn.onclick = () => {
               onAuthStateChanged(auth, (user) => {
