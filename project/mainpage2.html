@@ -114,7 +114,7 @@
     const seriesId = params.get("series");
     const auth = getAuth(app);
 
-
+    
     async function loadSeries() {
       const docRef = doc(db, "series", seriesId);
       const docSnap = await getDoc(docRef);
