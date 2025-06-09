@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1 id="h">Wecome</h1>
+</body>
+<script>
+        const name = document.getElementById("h");
+         name.textContent = 'bro';
+         const he2 = document.createElement("h2");
+         document.body.append(he2);
+         name1 = 'sanjay';
+         console.log(`my name is ${name1}`);
+         if (null===null) {
+            console.log("true");
+         }else{
+            console.log("false");
+         }
+         const fun = () =>{
+            console.log("funtion is runnig");
+         }
+         fun();
+        const obj = {
+            name:"sanjay",
+            name1:"Raj",
+        };
+        console.log(`${obj.name}${obj.name1}`);
+        for (let index = 0; index<10;index++) {
+            const btn = document.createElement("button");
+            btn.textContent = index+1;
+            document.body.append(btn);
+        }
+         
+        let food = prompt("Enter the num:");
+        
+        console.log(food);
+
+        
+    </script>
+</html>
