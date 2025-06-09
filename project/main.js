@@ -27,22 +27,6 @@ onAuthStateChanged(auth, (user) => {
 });
 
 
-async function loadWelcomeText() {
-    const docRef = doc(db, "massages", "welcomeText"); 
-    const docSnap = await getDoc(docRef);
-    
-
-    const img1 = docSnap.data().img;
-    document.getElementById("img1").src = img1;
-   
-
-    if (docSnap.exists()) {
-        const message = docSnap.data().message;
-        document.getElementById("displayText").textContent = message;
-    } else {
-        document.getElementById("displayText").textContent = "No message found";
-    }
-}
 
 
 
@@ -54,5 +38,5 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    loadWelcomeText(); 
+    
 });
