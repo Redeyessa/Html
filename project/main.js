@@ -22,7 +22,7 @@ onAuthStateChanged(auth, (user) => {
     const Signin = document.getElementById("logout");
     if (!user) {
         Signin.innerHTML = "Sign in";
-        // window.location.href = "loginpage.html";
+        
     }
 });
 
