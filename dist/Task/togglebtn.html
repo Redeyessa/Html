@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .checkbox-container{
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            background-color: rgb(85, 255, 0);
+            justify-content: center;
+        }
+        .button{
+            height: 100px;
+            width: 200px;
+            background-color: aliceblue;
+            border-radius: 150px;
+            cursor: pointer;
+            position: relative;
+            
+        }
+        .button::before{
+            position: absolute;
+            background-color: rgb(255, 0, 0) ;
+            height: 90px;
+            content: '';
+            margin: 5px;
+            width: 90px;
+            border-radius: 150px;
+            transition: 1s;
+        }
+        input:checked + .button::before{
+           background-color: blue;
+           transform: translateX(100px);
+        }
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+        #check{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Toggle button</h1>
+    <div class="checkbox-container" id="back">
+        
+        <input type="checkbox" id="check">
+        <label for="check" class="button"></label>
+    </div>
+</body>
+<script>
+    const box = document.getElementById('check').addEventListener('change',function() {
+         if (this.checked) {
+        console.log('is true');
+        
+            background.style.transition = "1s";
+            background.style.background = "blue";
+        }else{
+            background.style.backgroundColor = "aqua"
+        }
+    }
+    );
+    const background = document.getElementById('back');
+   
+</script>
+</html>
