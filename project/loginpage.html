@@ -27,21 +27,21 @@
             height: 100vh;
             display: flex;
             align-items: center;
-            background-color: rgb(85, 255, 0);
+            background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/6863f6e8-d419-414d-b5b9-7ef657e67ce4/web/IN-en-20250602-TRIFECTA-perspective_27a3fdfa-126f-4148-b153-55d60b51be6a_small.jpg');
             justify-content: center;
             margin: 0;
-
-
+            color: #ffffff;
+            
         }
 
         .container {
             width: 400px;
-            background-color: aqua;
             border-radius: 25px;
             padding: 30px;
             box-sizing: border-box;
-
-
+             backdrop-filter: blur(5px);
+             border: 5px white solid;
+             border-radius: 25px;
         }
 
         .h {
@@ -66,74 +66,98 @@
             background: none;
             font-size: 18px;
             outline: none;
-
-        }
-
-        .input1 {
-            align-items: center;
-            padding: 10px;
-            margin: 10px;
-            border: none;
-            width: 70%;
-            background: none;
-            border-bottom: 5px white solid;
-            font-size: 18px;
-            border-radius: 6px;
-            outline: none;
-            box-sizing: border-box;
+            margin-bottom: 20px;
+           
 
         }
 
         .input::placeholder {
-            color: #000;
+            color: #ffffff;
         }
 
         .checkbox-container {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         #forgot {
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             display: block;
+            margin-left: 10px;
             cursor: pointer;
+            color: red;
+            transition: 1s;
+        }
+        #forgot:hover{
+            color: aqua;
         }
 
         .submit {
             display: flex;
-
+            
             justify-content: center;
 
+        }
+        #submit{
+            background-color: rgb(255, 19, 19);
+            outline: none;
+            border: none;
+            border-radius: 25px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            transition: 1s;
+        }
+        #submit:hover{
+            background-color: aqua;
         }
          button {
             padding: 10px 20px;
         }
-
+      .a1{
+        color: #ffffff;
+        transition: 1s;
+      }
+      .a1:visited{
+        color: rgb(255, 0, 0);
+      }
+        .a1:hover{
+            color: aqua;
+        }
+        .show{
+            color: red;
+            transition: 1s;
+        }
+        .show:hover{
+            color: aquamarine;
+        }
     </style>
 </head>
 
 <body>
-    <div>
+    <header style="position: absolute; top: 0; left: 0; width: 100%; text-align: center; padding: 10px; color: #ffffff;">
+    <h1>Wecome to Free OTT
+    </h1>
+</header>
 
-    </div>
     <div class="container">
         <h1 class="h">Login Page</h1>
         <form>
             <div class="form-group">
-                <label for="Email">Email :</label>
+                <label for="Email"></label>
                 <input class="input" type="email" placeholder="Enter Your Email" id="Email" style="width: 100%; box-sizing: border-box;">
-                <label for="password">Password :</label>
+                <label for="password"></label>
             <input class="input" type="password" placeholder="Enter Your Password" id="password" style="width: 100%; box-sizing: border-box;">
             </div>
             
             <div class="checkbox-container">
-                <input type="checkbox" onclick="showpass()"> Show password
+                <input type="checkbox" onclick="showpass()" id="check"> <label for="check" class="show">Show password</label>
             </div>
             <a id="forgot">Forget Password?</a>
             <div class="submit">
                 <button id="submit">Sign in</button>
             </div>
-
-            <a href="signup.html">Don't have an account? Register</a>
+            <div style="margin-top: 30px; display: flex; justify-content: center;">
+                <a href="signup.html" class="a1">Don't have an account? Register</a>
+            </div>
+            
         </form>
 
     </div>
