@@ -77,7 +77,7 @@
 
     </div>
 
-    <div style="display: flex; margin: 10px; width: 300px; height: 300px;" id="body">
+    <div style="display: flex; margin: 10px; width: 300px; height: 300px;">
         <input type="color" id="color" style="width: 100px; height: 100px;">
         
         <p id="a" style="color: rgb(0, 0, 0);"></p>
@@ -88,18 +88,13 @@
 <script>
 
         
-            let color1 = document.getElementById("color").addEventListener("input",function(){
-               
-              document.body.style.backgroundColor =this.value;
-
-               p.innerText = this.value;
-            });
+    let color1 = document.getElementById("color").addEventListener("input",function(){
+        let b = document.body.style.backgroundColor =this.value;
+        p.innerText = this.value;
+    });
             
-              let p = document.getElementById('a');
-            
-                
-            
-                console.log("true");
+    let p = document.getElementById('a');
+    console.log("true");
             
              
         
