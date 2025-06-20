@@ -79,25 +79,47 @@
 
     <div style="display: flex; margin: 10px;">
         <input type="color" id="color" style="width: 100px; height: 100px;">
-        
+
         <p id="a" style="color: rgb(0, 0, 0);"></p>
 
+    </div>
+    <div>
+        <input type="number" style="width: 100px;" id="Time">
+    <button onclick="op()">start</button>
+    </div>
+    
+    <div style="width: 300px; height: 300px; border: 10px blue solid; border-radius: 200px; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+        <p id="timenote" style="font-size: 3cm;">00</p>
     </div>
 
 </body>
 <script>
+    function op() {
+        let i = document.getElementById("Time").value;
+        let t = document.getElementById("timenote");
+        setInterval(function () {
+            
+            if(i<0){
+                
+                return;
+            }
+            t.innerText = i--;
+            console.log(i);
 
-        
-    let color1 = document.getElementById("color").addEventListener("input",function(){
-        let b = document.body.style.backgroundColor =this.value;
-        if(this.value=="#ffffff")
-        {p.style.color = "#000000";}
+        },1000)
+    }
+
+
+
+    let color1 = document.getElementById("color").addEventListener("input", function () {
+        let b = document.body.style.backgroundColor = this.value;
+        if (this.value == "#ffffff") { p.style.color = "#000000"; }
         else {
             p.style.color = "#ffffff";
         }
         p.innerText = this.value;
     });
-            
+
     let p = document.getElementById('a');
     console.log("true");
 
