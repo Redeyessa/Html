@@ -91,9 +91,24 @@
     <div style="width: 300px; height: 300px; border: 10px blue solid; border-radius: 200px; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
         <p id="timenote" style="font-size: 3cm;">00</p>
     </div>
+    <button id="btn" onclick="ranimg()">Random</button>
+    <div id="ran-img">
+    
+    </div>
 
 </body>
 <script>
+    function ranimg() {
+        let Ranimge = document.getElementById("ran-img");
+        let btn = document.getElementById("btn");
+        let url = "https://dog.ceo/api/breeds/image/random";
+        fetch(url).then(response => response.json()).then(json =>
+            
+            Ranimge.innerHTML = `<img src="${json.message}"width="300px" height="300px" >`
+            
+        )
+    
+    }
     function op() {
         let i = document.getElementById("Time").value;
         let t = document.getElementById("timenote");
