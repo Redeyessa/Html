@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+</body>
+<script>
+    let mypromise = new Promise((resolve,reject)=>{
+        let flag = 0;
+        if(flag){
+            resolve("Success");
+        }
+        else{
+            reject("Failed");
+        }
+    });
+
+    const get = async () =>{
+        try{
+           const result = await mypromise;
+        console.log(result) 
+        }
+        catch(error){
+            console.log(error);
+        }
+        
+        
+    }
+    get();
+    class bank{
+        constructor(total){
+             this.total = total;
+             console.log(this.total);
+        }
+
+        withdraw(withdraw){
+            
+            this.withdraw = this.total - withdraw;
+            console.log(this.withdraw); 
+            this.total = this.withdraw;       
+        }
+        deposite(deposite){
+           let total1 = this.total += deposite;
+           console.log(total1);
+
+        }
+    }
+    let bank1 = new bank(1000);
+    bank1.withdraw(50);
+    bank1.deposite(100)
+
+</script>
+</html>
