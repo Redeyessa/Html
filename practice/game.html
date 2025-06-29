@@ -259,21 +259,27 @@ body {
   let p2Name = document.getElementById("p2Name");
   let p1heal = document.getElementById("p1Health");
   let p2heal = document.getElementById("p2Health");
+  let result = document.getElementById("result");
   function update(){
     p1Name.innerText = player1.name;
     p2Name.innerText = player2.name;
     p1heal.innerHTML = player1.heath;
     p2heal.innerHTML = player2.heath;
+    
   }
   class player{
-    constructor(name,heath,attackDmg){
+    constructor(name,heath,attackDmg,result){
       this.name = name;
       this.heath = heath;
       this.attackDmg = attackDmg;
+     
     }
     strike(player1,enemy){
       let dam = Math.ceil(Math.random()*player1.attackDmg);
-      enemy.heath -= dam;
+      if(enemy.heath>0){
+        enemy.heath -= dam;
+      }
+     
       update();
     }
     heal(){
@@ -281,11 +287,14 @@ body {
       this.heath += healing;
       update();
     }
-  } 
-   let player1 = new player("sanjay",1000,10);
-  let player2 = new player("sanjay1",1000,10);
+  }
+
+   let player1 = new player("sanjay",10,10);
+  let player2 = new player("sanjay1",10,10);
+
   update()
-  strike(player1,player2)
+
+  
 
 
     
