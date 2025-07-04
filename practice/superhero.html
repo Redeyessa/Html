@@ -58,7 +58,7 @@
     function gethero(name) {
         fetch(`${URL}/search/${name}`).then((response => response.json())).
             then((data) => {
-                // let imageurl = data.results[0].image.url
+                //let imageurl = data.results[0].image.url
                 console.log(data.results[0].powerstats.combat) 
                 short(data.results[0])
 

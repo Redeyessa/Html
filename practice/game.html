@@ -204,7 +204,7 @@ body {
       
       <img 
         id="p2" 
-        src="https://i.pinimg.com/originals/4c/97/4d/4c974db3347daac677cf6588d8f4598b.gif"
+        src="https://s2.ezgif.com/tmp/ezgif-28346225295615.gif"
       />
       <div class="playerControls">
         <div class="AttackDiv">
@@ -260,11 +260,27 @@ body {
   let p1heal = document.getElementById("p1Health");
   let p2heal = document.getElementById("p2Health");
   let result = document.getElementById("result");
+  let p1 = document.getElementById("p1");
+  let gameOver = false;
+
+
+
   function update(){
     p1Name.innerText = player1.name;
     p2Name.innerText = player2.name;
     p1heal.innerHTML = player1.heath;
     p2heal.innerHTML = player2.heath;
+    if(player2.heath<0){
+      result.innerHTML = `<p>${player1.name} is Winner</p>`
+      p2.setAttribute("src","https://s1.ezgif.com/tmp/ezgif-1a15b63d1b7838.gif");
+      gameOver = true;
+    }
+    if(player1.heath<0){
+       result.innerHTML = `<p>${player2.name} is Winner</p>`
+       p1.setAttribute("src","https://ezgif.com/save/ezgif-27742dcf8c029b.gif");
+       gameOver = true;
+    }
+  
     
   }
   class player{
@@ -276,7 +292,7 @@ body {
     }
     strike(player1,enemy){
       let dam = Math.ceil(Math.random()*player1.attackDmg);
-      if(enemy.heath>0){
+      if(enemy.heath>=0){
         enemy.heath -= dam;
       }
      
@@ -284,18 +300,56 @@ body {
     }
     heal(){
       let healing = Math.ceil(Math.random()*5);
-      this.heath += healing;
+        if(this.heath<100){
+          this.heath += healing;
+          
+        }
+     
       update();
     }
   }
 
-   let player1 = new player("sanjay",10,10);
-  let player2 = new player("sanjay1",10,10);
+   let player1 = new player("sanjay",1000,10);
+  let player2 = new player("sanjay1",1000,10);
 
   update()
 
   
-
+ document.addEventListener("keypress",(Event) =>{
+  
+  if(Event.key == "q"){
+    if (gameOver) return;
+    
+    player1.strike(player1,player2);
+    p1.setAttribute("src","https://i.gifer.com/origin/d0/d0c17d367c3ab0d5b89713eb6eb3aeec_w200.webp");
+     setTimeout(() => {
+    p1.setAttribute("src", "https://i.gifer.com/origin/00/0019f6845ceaa9347b881ccbe8f5644a_w200.gif");
+  }, 500);
+   
+  }
+  if(Event.key == "p"){
+    if (gameOver) return;
+    
+    player2.strike(player2,player1);
+    p2.setAttribute("src","https://s2.ezgif.com/tmp/ezgif-240161e15358aa.gif");
+     setTimeout(() => {
+    p2.setAttribute("src", "https://s2.ezgif.com/tmp/ezgif-28346225295615.gif");
+  }, 500);
+   
+  }
+ 
+  if(Event.key == 'a'){
+   
+    player1.heal();
+  }
+   if(Event.key == 'l'){
+    
+    player2.heal();
+  }
+    
+    
+  
+ })
 
     
 </script>
