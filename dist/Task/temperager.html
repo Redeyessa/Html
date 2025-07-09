@@ -36,6 +36,20 @@
     </div>
   </div>
   </div>
+  
 </body>
-
+<script>
+    let cel = document.getElementById("cel");
+    let far = document.getElementById('far');
+    let kel = document.getElementById("kel");
+    let celval = cel.value;
+    document.addEventListener("keypress",(e)=>{
+      console.log(e.key);
+      if(e.key == "p")
+      far.value = celval;
+    });
+      
+    
+    
+</script>
 </html>
