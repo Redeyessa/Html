@@ -32,7 +32,16 @@
             justify-content: center;
             margin: 0;
             color: #ffffff;
-            
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .container {
@@ -43,6 +52,18 @@
              backdrop-filter: blur(5px);
              border: 5px white solid;
              border-radius: 25px;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .h {
@@ -69,12 +90,15 @@
             outline: none;
             color: #ffffff;
             margin-bottom: 20px;
-           
-
+            transition: border-color 0.3s ease;
         }
 
         .input::placeholder {
             color: #ffffff;
+        }
+
+        .input:focus {
+            border-color: rgb(255, 100, 100);
         }
 
         .checkbox-container {
@@ -88,8 +112,18 @@
             cursor: pointer;
             color: red;
             transition: 1s;
-            
+           
         }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
         #forgot:hover{
             color: aqua;
         }
@@ -111,10 +145,11 @@
             font-size: 18px;
             cursor: pointer;
             box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-            transition: 1s;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
         #submit:hover{
-            background-color: aqua;
+            transform: scale(1.1);
+            background-color: rgb(255, 100, 100);
         }
          button {
             padding: 10px 20px;
@@ -132,7 +167,7 @@
         }
         .show{
             color: red;
-            transition: 1s;
+            transition: 0.5s;
         }
         .show:hover{
             color: aquamarine;

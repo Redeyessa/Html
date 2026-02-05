@@ -10,9 +10,93 @@
     function openSeries(seriesId) {
       window.location.href = `mainpage2.html?series=${seriesId}`;
     }
+
+    function searchMovies() {
+      const input = document.getElementById("searchBar").value.toLowerCase();
+
+
+      const sections = document.querySelectorAll(".main");
+
+      sections.forEach(section => {
+        const cards = section.querySelectorAll("a");
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const key = card.getAttribute("onclick")?.toLowerCase() || "";
+
+          if (key.includes(input)) {
+            card.style.display = "inline-block";
+            visibleCount++;
+            card.style.animation = "appear 0.5s ease";
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+
+        let title = section.previousElementSibling;
+
+        if (title) {
+
+          title.style.display = visibleCount > 0 ? "block" : "none";
+        }
+
+
+        section.style.display = visibleCount > 0 ? "flex" : "none";
+      });
+
+
+      if (input === "") {
+        document.querySelectorAll(".main a").forEach(a => {
+          a.style.display = "inline-block";
+        });
+
+        document.querySelectorAll(".main").forEach(m => {
+          m.style.display = "flex";
+        });
+
+        document.querySelectorAll("#cat").forEach(h => {
+          h.style.display = "block";
+        });
+      }
+    }
+
   </script>
 
   <style>
+    #searchBar {
+      position: absolute;
+      right: 100px;
+      top: 20px;
+
+      border: none;
+
+      border-radius: 5px;
+
+      z-index: 1000;
+      font-size: 14px;
+      background-color: #1a1a1a;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    #searchBar::placeholder {
+      color: #bdbdbd;
+    }
+
+    #searchBar:focus {
+      background-color: #222;
+      box-shadow: 0 0 0 2px rgba(0, 183, 255, 0.6);
+    }
+
+
+    @media (max-width: 768px) {
+      #searchBar {
+        width: 150px;
+        font-size: 13px;
+      }
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -137,12 +221,14 @@
         height: 80px;
         flex: 0 0 auto;
       }
-      .mainimg{
+
+      .mainimg {
         transition: 0s;
       }
-       .mainimg:hover{
-       transform: scale(1.1);
-    }
+
+      .mainimg:hover {
+        transform: scale(1.1);
+      }
     }
 
 
@@ -157,12 +243,14 @@
         font-size: 14px;
       }
     }
-    @keyframes appear{
-      from{
+
+    @keyframes appear {
+      from {
         opacity: 0;
         scale: 0.5;
       }
-      to{
+
+      to {
         opacity: 1;
         scale: 1;
       }
@@ -186,7 +274,7 @@
     }
 
     .mainimg {
-      
+
       width: 350px;
       height: 200px;
       background-color: rgb(0, 183, 255);
@@ -195,28 +283,42 @@
       margin-left: 10px;
       margin-right: 10px;
       border-radius: 6px;
-      
+
       transition: 1s;
 
     }
-    .mainimg:hover{
-       transform: scale(1.1);
+
+    .mainimg:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 
-<body> 
- 
-  <header >
-    <img src="https://firebasestorage.googleapis.com/v0/b/my-music-d8a4f.appspot.com/o/Cover%20images%2FChatGPT%20Image%20Aug%2010%2C%202025%2C%2003_00_37%20PM.png?alt=media&token=aecd412c-fac0-48b0-b464-2e425621c459" alt="Free OTT Logo"  style=" height: 80px; width: 80px; margin: 10px; position: absolute;">
+<body>
+
+  <header>
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/my-music-d8a4f.appspot.com/o/Cover%20images%2FChatGPT%20Image%20Aug%2010%2C%202025%2C%2003_00_37%20PM.png?alt=media&token=aecd412c-fac0-48b0-b464-2e425621c459"
+      alt="Free OTT Logo" style=" height: 80px; width: 80px; margin: 10px; position: absolute;">
     <h1 style="color: white; font-size: 24px; " class="appname">Free OTT</h1>
+    <input type="text" id="searchBar" placeholder="Search movies or series..." onkeyup="searchMovies()" style="
+    margin-left: 20px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 220px;
+  ">
 
     <button id="logout">Logout</button>
-</header>
+  </header>
 
   <div class="Animebar">
-    <img src="https://imgeng.jagran.com/images/2025/02/24/article/image/Pradeep-Ranganathan-1740365523315.webp" class="Anime item1" />
-    <img id="img1" src="https://th.bing.com/th/id/OIP.M3QoJC2lpeqt1_sGfe_VaQHaEK?rs=1&pid=ImgDetMain" class="Anime item2" />
+    <img src="https://imgeng.jagran.com/images/2025/02/24/article/image/Pradeep-Ranganathan-1740365523315.webp"
+      class="Anime item1" />
+    <img id="img1" src="https://th.bing.com/th/id/OIP.M3QoJC2lpeqt1_sGfe_VaQHaEK?rs=1&pid=ImgDetMain"
+      class="Anime item2" />
     <img src="https://wallpapercave.com/wp/wp6374954.jpg" class="Anime item3" />
     <img src="https://th.bing.com/th/id/OIP.pUh6IS8kiomgscBqGhmjTQHaEK?rs=1&pid=ImgDetMain" class="Anime item4" />
     <img src="https://th.bing.com/th/id/OIP.ocqPuimjfU4733a7PeTBpQHaHa?rs=1&pid=ImgDetMain" class="Anime item5" />
@@ -226,41 +328,72 @@
   </div>
 
 
-  <h1 style="margin-left: 15px;">Tamil Movies</h1>
+  <h1 style="margin-left: 15px;" id="cat">Tamil Movies</h1>
   <div class="main">
-    <a onclick="openSeries('Dragon')"><img src="https://th.bing.com/th/id/OIP.lnsTp1uWq1i0tjmUScsWVAHaD-?rs=1&pid=ImgDetMain" class="mainimg"></a>
-    <a onclick="openSeries('Tourist_Family')"><img src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202505/tourist-family-161704800-16x9_0.jpeg?VersionId=JRWFEn0P0ldnrF7EER7sDTzzNjLdVZXg&size=690:388" class="mainimg"></a>
-    <a onclick="openSeries('TItanic')"><img src="https://ntvb.tmsimg.com/assets/p20056_v_h10_bh.jpg?w=1280&h=720" class="mainimg" alt="mm"></a>
-    <a onclick="openSeries('pushpa2')"><img src="https://th.bing.com/th/id/OIP.b0hK8bUJsSAk79_1LNF91gHaEK?w=298&h=180&c=7&r=0&o=7&cb=defcache2&dpr=1.3&pid=1.7&rm=3&defcache=1" class="mainimg"></a>
-    <a onclick="openSeries('retro')"><img src="https://imagesvs.oneindia.com/img/2025/05/retro-movie-review-01-1746037859.jpg" class="mainimg"></a>
+    <a onclick="openSeries('Dragon')"><img
+        src="https://th.bing.com/th/id/OIP.lnsTp1uWq1i0tjmUScsWVAHaD-?rs=1&pid=ImgDetMain" class="mainimg"></a>
+    <a onclick="openSeries('Tourist_Family')"><img
+        src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202505/tourist-family-161704800-16x9_0.jpeg?VersionId=JRWFEn0P0ldnrF7EER7sDTzzNjLdVZXg&size=690:388"
+        class="mainimg"></a>
+    <a onclick="openSeries('TItanic')"><img src="https://ntvb.tmsimg.com/assets/p20056_v_h10_bh.jpg?w=1280&h=720"
+        class="mainimg" alt="mm"></a>
+    <a onclick="openSeries('pushpa2')"><img
+        src="https://th.bing.com/th/id/OIP.b0hK8bUJsSAk79_1LNF91gHaEK?w=298&h=180&c=7&r=0&o=7&cb=defcache2&dpr=1.3&pid=1.7&rm=3&defcache=1"
+        class="mainimg"></a>
+    <a onclick="openSeries('retro')"><img
+        src="https://imagesvs.oneindia.com/img/2025/05/retro-movie-review-01-1746037859.jpg" class="mainimg"></a>
   </div>
-  <h1 style="margin-left: 15px;">Tamil Movies</h1>
+  <h1 style="margin-left: 15px;" id="cat">Tamil Movies</h1>
   <div class="main">
-    <a onclick="openSeries('leo')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQvi9ohp_MmnlA-DnTFp-_XygujTgMQW2gJQ&s" class="mainimg"></a>
-    <a onclick="openSeries('avengers1')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_5nzQLnNTcp-wuVmJbQwvWdFwYUjoiRBfw&s" class="mainimg"></a>
-    <a onclick="openSeries('avengers2')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNGGr1zJO3IIkBZY2GMr_Hfd-ug56zIsYa-w&s" class="mainimg"></a>
-    <a onclick="openSeries('avengers3')"><img src="https://images.saymedia-content.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTc0NDY3NDYyMTExNjM1MDc4/avengers-infinity-war-2018-review.jpg" class="mainimg"></a>
-    <a onclick="openSeries('avengers4')"><img src="https://ntvb.tmsimg.com/assets/p15366809_v_h10_aw.jpg?w=1280&h=720" class="mainimg"></a>
+    <a onclick="openSeries('leo')"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQvi9ohp_MmnlA-DnTFp-_XygujTgMQW2gJQ&s"
+        class="mainimg"></a>
+    <a onclick="openSeries('avengers1')"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_5nzQLnNTcp-wuVmJbQwvWdFwYUjoiRBfw&s"
+        class="mainimg"></a>
+    <a onclick="openSeries('avengers2')"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNGGr1zJO3IIkBZY2GMr_Hfd-ug56zIsYa-w&s"
+        class="mainimg"></a>
+    <a onclick="openSeries('avengers3')"><img
+        src="https://images.saymedia-content.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTc0NDY3NDYyMTExNjM1MDc4/avengers-infinity-war-2018-review.jpg"
+        class="mainimg"></a>
+    <a onclick="openSeries('avengers4')"><img src="https://ntvb.tmsimg.com/assets/p15366809_v_h10_aw.jpg?w=1280&h=720"
+        class="mainimg"></a>
   </div>
-  <h1 style="margin-left: 15px;">Tamil Movies</h1>
+  <h1 style="margin-left: 15px;" id="cat">Tamil Movies</h1>
   <div class="main">
-    <a onclick="openSeries('Love_Marriage')"><img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/medium/love-marriage-et00447813-1748498196.jpg" class="mainimg"></a>
-    <a onclick="openSeries('shazam')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbGjEZLQqAvIbKNBrHY_JZ1fl0HKL3Cn1Ww&s" class="mainimg"></a>
-    <a onclick="openSeries('LuckyBaskhar')"><img src="https://cdn.123telugu.com/telugu/wp-content/uploads/2024/08/LuckyBaskhar-m.jpg" class="mainimg"></a>
-    <a onclick="openSeries('Vaazhai')"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyM0Fz7kSRUvKpPKs1gNKPsvshOlTXkNAJSuCZH9TD8tgovk3Jw-L8jrrFMULmGmF5H7R2Hw" class="mainimg"></a>
-    <a onclick="openSeries('The Nun 2018')"><img src="https://moviewarden.wordpress.com/wp-content/uploads/2018/09/the-nun-movie-poster.jpg?w=800" class="mainimg"></a>
+    <a onclick="openSeries('Love_Marriage')"><img
+        src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/listing/medium/love-marriage-et00447813-1748498196.jpg"
+        class="mainimg"></a>
+    <a onclick="openSeries('shazam')"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbGjEZLQqAvIbKNBrHY_JZ1fl0HKL3Cn1Ww&s"
+        class="mainimg"></a>
+    <a onclick="openSeries('LuckyBaskhar')"><img
+        src="https://cdn.123telugu.com/telugu/wp-content/uploads/2024/08/LuckyBaskhar-m.jpg" class="mainimg"></a>
+    <a onclick="openSeries('Vaazhai')"><img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyM0Fz7kSRUvKpPKs1gNKPsvshOlTXkNAJSuCZH9TD8tgovk3Jw-L8jrrFMULmGmF5H7R2Hw"
+        class="mainimg"></a>
+    <a onclick="openSeries('The Nun 2018')"><img
+        src="https://moviewarden.wordpress.com/wp-content/uploads/2018/09/the-nun-movie-poster.jpg?w=800"
+        class="mainimg"></a>
   </div>
-   <h1 style="margin-left: 15px;">Tamil series</h1>
+  <h1 style="margin-left: 15px;" id="cat">Tamil series</h1>
   <div class="main">
 
     <a onclick="openSeries('jjk')"><img
-        src="https://th.bing.com/th/id/OIP.M3QoJC2lpeqt1_sGfe_VaQHaEK?rs=1&pid=ImgDetMain"
+        src="https://th.bing.com/th/id/OIP.M3QoJC2lpeqt1_sGfe_VaQHaEK?rs=1&pid=ImgDetMain" class="mainimg"></a>
+    <a onclick="openSeries('money_heist')"><img
+        src="https://th.bing.com/th/id/OIP.cpASSoiNczMWepzirtsWuQHaDn?rs=1&pid=ImgDetMain" class="mainimg"></a>
+    <a onclick="openSeries('daredevil')"><img
+        src="https://upload.wikimedia.org/wikipedia/en/d/d9/Daredevil_Born_Again_logo.jpeg" class="mainimg"></a>
+    <a onclick="openSeries('She-Hulk Attorney at Law (2022)')"><img
+        src="https://upload.wikimedia.org/wikipedia/en/3/32/She-Hulk_Attorney_at_Law_logo.jpg" class="mainimg"></a>
+    <a onclick="openSeries('Love Today (2022)')"><img
+        src="https://resizing.flixster.com/QwmKjTlQgb8TDKI7XEUArVpVsHs=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p23364878_v_h8_aa.jpg"
         class="mainimg"></a>
-    <a onclick="openSeries('money_heist')"><img src="https://th.bing.com/th/id/OIP.cpASSoiNczMWepzirtsWuQHaDn?rs=1&pid=ImgDetMain" class="mainimg"></a>
-    <a onclick="openSeries('daredevil')"><img src="https://upload.wikimedia.org/wikipedia/en/d/d9/Daredevil_Born_Again_logo.jpeg" class="mainimg"></a>
-    <a onclick="openSeries('She-Hulk Attorney at Law (2022)')"><img src="https://upload.wikimedia.org/wikipedia/en/3/32/She-Hulk_Attorney_at_Law_logo.jpg" class="mainimg"></a>
-    <a onclick="openSeries('Love Today (2022)')"><img src="https://resizing.flixster.com/QwmKjTlQgb8TDKI7XEUArVpVsHs=/fit-in/705x460/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p23364878_v_h8_aa.jpg" class="mainimg"></a>
-    <a onclick="openSeries('Vikram (2022)')"><img src="https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/436/1630436-h-18323ab5427d" class="mainimg"></a>
+    <a onclick="openSeries('Vikram (2022)')"><img
+        src="https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/436/1630436-h-18323ab5427d"
+        class="mainimg"></a>
   </div>
 </body>
 
